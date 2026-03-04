@@ -19,4 +19,13 @@ def get_unique_parks(data):
     return sorted(set(row["Branch"] for row in data))
 
 def get_reviews_by_park(data, park):
+
     return [row for row in data if row["Branch"] == park]
+
+def get_reviews_count_by_park_and_location(data, park, location):
+
+    return sum(
+        1 for row in data
+        if row["Branch"] == park
+        and row["Reviewer_Location"] == location
+    )

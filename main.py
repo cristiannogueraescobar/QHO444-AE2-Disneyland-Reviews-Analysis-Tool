@@ -24,7 +24,10 @@ def handle_view_data(data, parks):
         reviews = process.get_reviews_by_park(data, park)
         tui.display_reviews(reviews, park)
     elif choice == "B":
-        print("\nNumber of Reviews by Park and Reviewer Location - coming soon\n")
+        park = tui.get_park_choice(parks)
+        location = tui.get_location_choice(data)
+        count = process.get_reviews_count_by_park_and_location(data, park, location)
+        tui.display_review_count(park, location, count)
     elif choice == "C":
         print("\nAverage Score per year by Park - coming soon\n")
     elif choice == "D":

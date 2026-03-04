@@ -58,7 +58,7 @@ def get_park_choice(parks):
         print("\nInvalid choice. Please try again.\n")
 
 def display_reviews(reviews, park):
-    print("\n---Park Reviews for {park} ({len(reviews)} total)---.\n")
+    print(f"\n---Park Reviews for {park} ({len(reviews)} total)---.\n")
     if not reviews:
         print("\nNo Reviews Available.\n")
         return
@@ -68,5 +68,22 @@ def display_reviews(reviews, park):
             f" Date: {review['Year_Month']} "
             f" Location: {review['Reviewer_Location']} "
         )
+
+
+def get_location_choice(data):
+    locations = sorted(set(
+        row['Reviewer_Location'] for row in data
+        if row['Reviewer_Location']
+
+    ))
+
+    print("\nAvailable locations:\n")
+    for loc in locations:
+        print(f" - {loc}")
+    print()
+    return input("\nEnter reviewer location: .").strip()
+
+def display_review_count(park, location, count):
+    print(f"\nReviews for {park} from {location}: {count}\n")
 
 
