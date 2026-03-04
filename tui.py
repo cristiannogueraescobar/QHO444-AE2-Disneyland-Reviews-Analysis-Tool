@@ -34,3 +34,16 @@ def display_selected_choice(choice):
 def display_invalid_choice():
     print("\nInvalid choice. Please try again.\n")
 
+def display_view_data_menu():
+    print("\nPlease select an option from the menu.\n")
+    print("[A] View Reviews by Park\n")
+    print("[B] Number of Reviews by Park and Location\n")
+    print("[C] Average Rating by Park and Year\n")
+    print("[D] Average Score per Park by Reviewer Location\n")
+
+def display_visualise_menu():
+    print("\nPlease select an option from the menu.\n")
+    print("[A] Most Reviewed Parks\n")
+    print("[B] Park Ranking by Nationality\n")
+    print("[C] Most Popular Month by Park\n")
+

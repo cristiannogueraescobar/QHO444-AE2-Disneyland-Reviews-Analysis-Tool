@@ -27,9 +27,9 @@ def main():
         tui.display_selected_choice(choice)
 
         if choice == "A":
-            print("\nView Data - coming soon\n")
+            handle_view_data()
         elif choice == "B":
-            print("\nVisualise Data - coming soon\n")
+            handle_visualise_data(data, parks)
         elif choice == "X":
             print("\nGoodbye!\n")
             break
@@ -39,3 +39,30 @@ def main():
 if __name__ == "__main__":
     main()
 
+def handle_view_data(data, parks):
+    tui.display_view_data_menu()
+    choice = tui.get_menu_choice()
+    tui.display_selected_choice(choice)
+
+    if choice == "A":
+        print("\nView Review by park - coming soon\n")
+    elif choice == "B":
+        print("\nNumber of Reviews by Park and Reviewer Location - coming soon\n")
+    elif choice == "C":
+        print("\nAverage Score per year by Park - coming soon\n")
+    elif choice == "D":
+        print("\nAverage Score per Park by Reviewer Location - coming soon\n")
+    else:
+        tui.display_invalid_choice()
+
+def handle_visualise_data(data, parks):
+    tui.display_visualise_menu()
+    choice = tui.get_menu_choice()
+    tui.display_selected_choice(choice)
+
+    if choice == "A":
+        print("\nMost reviewed Parks - coming soon\n")
+    elif choice == "B":
+        print("\nPark Ranking by Nationality - coming soon\n")
+    elif choice == "C":
+        print("\nMost Popular Month by Park \n")
