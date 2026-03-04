@@ -17,12 +17,12 @@ def display_loading_message(row_count):
 
 def display_main_menu():
     print("-" * 50)
-    print("\n          MENU          \n")
+    print("          MENU          ")
     print("-" * 50)
     print("\nPlease select an option from the menu.\n")
     print("[A] View Data\n")
     print("[B] Visualise Data\n")
-    print("[C] Exit\n")
+    print("[X] Exit\n")
 
 def get_menu_choice():
     return input("\nEnter your choice: .\n").strip().upper()

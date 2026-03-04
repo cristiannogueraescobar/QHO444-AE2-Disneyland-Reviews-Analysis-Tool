@@ -20,19 +20,21 @@ def main():
     parks = process.get_unique_parks(data)
     tui.display_loading_message(len(data))
 
-    tui.display_main_menu()
-    choice = tui.get_menu_choice()
+    while True:
+        tui.display_main_menu()
+        choice = tui.get_menu_choice()
 
-    tui.display_selected_choice(choice)
+        tui.display_selected_choice(choice)
 
-    if choice == "A":
-        print("\nView Data - coming soon\n")
-    elif choice == "B":
-        print("\nVisualise Data - coming soon\n")
-    elif choice == "X":
-        print("\nGoodbye!\n")
-    else:
-        tui.display_invalid_choice()
+        if choice == "A":
+            print("\nView Data - coming soon\n")
+        elif choice == "B":
+            print("\nVisualise Data - coming soon\n")
+        elif choice == "X":
+            print("\nGoodbye!\n")
+            break
+        else:
+            tui.display_invalid_choice()
 
 if __name__ == "__main__":
     main()
