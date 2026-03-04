@@ -89,8 +89,14 @@ def display_review_count(park, location, count):
 def get_year_choice():
     return input("\nEnter a year (e.g. 2019): .\n").strip()
 
-def display_average_raiting(park, year, average):
+def display_average_rating(park, year, average):
     if average is None:
         print(f"\nNo data found for {park} in {year}.\n")
     else:
         print(f"\nAverage Rating for {park} in {year}: {average:.2f}.\n")
+
+def display_average_score_by_location(results):
+    for park, location_data in results.items():
+        print(f"\n--- {park} ---")
+        for location, avg in sorted(location_data.items()):
+            print(f" - {location}: {avg:.2f}")

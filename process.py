@@ -91,3 +91,27 @@ def get_average_rating_by_month(data, park):
         month : month_totals[month] / month_counts[month]
         for month in month_totals
     }
+
+def get_average_score_per_park_by_location(data):
+    structure = {}
+
+    for row in data:
+        park = row["Branch"]
+        loc = row["Reviewer_Location"]
+
+        if park not in structure:
+            structure[park] = {}
+
+        if loc not in structure[park]:
+            structure[park][loc] = {"total" : 0, "count" : 0}
+
+        structure[park][loc]["total"] += row["Rating"]
+        structure[park][loc]["count"] += 1
+
+    result = {}
+    for park, locations in structure.items():
+        result[park] = {
+            loc: locations[loc]["total"] / locations[loc]["count"]
+            for loc in locations
+        }
+    return result

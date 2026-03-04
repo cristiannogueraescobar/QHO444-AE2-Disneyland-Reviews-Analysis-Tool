@@ -35,7 +35,9 @@ def handle_view_data(data, parks):
         tui.display_average_raiting(park, year, average)
 
     elif choice == "D":
-        print("\nAverage Score per Park by Reviewer Location - coming soon\n")
+        results = process.get_average_score_per_park_by_location(data)
+        tui.display_average_score_by_location(results)
+
     else:
         tui.display_invalid_choice()
 
