@@ -46,7 +46,9 @@ def handle_visualise_data(data, parks):
     tui.display_selected_choice(choice)
 
     if choice == "A":
-        print("\nMost reviewed Parks - coming soon\n")
+        counts = process.get_review_count_by_park(data)
+        visual.show_pie_chart_reviews_per_park(counts)
+
     elif choice == "B":
         print("\nPark Ranking by Nationality - coming soon\n")
     elif choice == "C":

@@ -38,3 +38,10 @@ def get_average_rating_by_park_and_year(data, park, year):
     if not ratings:
         return None
     return sum(ratings) / len(ratings)
+
+def get_review_count_by_park(data):
+    counts = {}
+    for row in data:
+        park = row["Branch"]
+        counts[park] = counts.get(park, 0) + 1
+    return counts
