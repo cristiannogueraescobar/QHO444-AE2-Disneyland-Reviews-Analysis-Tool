@@ -45,3 +45,25 @@ def get_review_count_by_park(data):
         park = row["Branch"]
         counts[park] = counts.get(park, 0) + 1
     return counts
+
+def get_top_locations_by_average_rating(data, park, top_n=10):
+
+    park_data = [row for row in data if row["Branch"] == park]
+    location_totals = {}
+    location_counts = {}
+
+    for row in park_data:
+        loc = row["Reviewer_Location"]
+        location_totals[loc] = location_totals.get(loc, 0) + row["Rating"]
+        location_counts[loc] = location_counts.get(loc, 0) + 1
+
+    averages = {
+        loc : location_totals[loc] / location_counts[loc]
+        for loc in location_totals
+    }
+    sorted_locs = sorted(averages.items(), key=lambda x: x[1], reverse=True)
+    top_10_by_count = sorted(
+        [(loc, avg, location_counts[loc]) for loc, avg in averages.items()],
+        key=lambda x: x[2], reverse=True
+    )
+    return top_10_by_count[:top_n]

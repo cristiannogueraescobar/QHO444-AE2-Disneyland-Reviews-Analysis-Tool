@@ -7,7 +7,6 @@ Note:   any user input/output should be done in the module 'tui'
         any processing should be done in the module 'process'
         any visualisation should be done in the module 'visual'
 """
-from numpy.ma.extras import average
 
 import tui
 import process
@@ -50,7 +49,10 @@ def handle_visualise_data(data, parks):
         visual.show_pie_chart_reviews_per_park(counts)
 
     elif choice == "B":
-        print("\nPark Ranking by Nationality - coming soon\n")
+        park = tui.get_park_choice(parks)
+        top = process.get_top_locations_by_average_rating(data, park)
+        visual.show_bar_chart_top_locations(top, park)
+
     elif choice == "C":
         print("\nMost Popular Month by Park \n")
     else:
