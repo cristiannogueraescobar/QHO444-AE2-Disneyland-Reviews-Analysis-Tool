@@ -17,3 +17,6 @@ def load_data(filepath):
 def get_unique_parks(data):
 
     return sorted(set(row["Branch"] for row in data))
+
+def get_reviews_by_park(data, park):
+    return [row for row in data if row["Branch"] == park]

@@ -47,3 +47,26 @@ def display_visualise_menu():
     print("[B] Park Ranking by Nationality\n")
     print("[C] Most Popular Month by Park\n")
 
+def get_park_choice(parks):
+    print("\nAvailable parks: .\n")
+    for i, park in enumerate(parks, 1):
+        print(f"   {i}. {park}")
+    while True:
+        choice = input("\nEnter your choice: .\n").strip()
+        if choice in parks:
+            return choice
+        print("\nInvalid choice. Please try again.\n")
+
+def display_reviews(reviews, park):
+    print("\n---Park Reviews for {park} ({len(reviews)} total)---.\n")
+    if not reviews:
+        print("\nNo Reviews Available.\n")
+        return
+    for review in reviews:
+        print(
+            f" Rating: {review['Rating']} " 
+            f" Date: {review['Year_Month']} "
+            f" Location: {review['Reviewer_Location']} "
+        )
+
+
