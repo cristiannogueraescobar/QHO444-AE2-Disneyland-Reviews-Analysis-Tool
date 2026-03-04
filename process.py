@@ -29,3 +29,12 @@ def get_reviews_count_by_park_and_location(data, park, location):
         if row["Branch"] == park
         and row["Reviewer_Location"] == location
     )
+def get_average_rating_by_park_and_year(data, park, year):
+    ratings = [
+        row["Rating"] for row in data
+        if row["Branch"] == park
+        and row["Year_Month"].startswith(year)
+    ]
+    if not ratings:
+        return None
+    return sum(ratings) / len(ratings)

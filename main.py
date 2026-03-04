@@ -7,6 +7,7 @@ Note:   any user input/output should be done in the module 'tui'
         any processing should be done in the module 'process'
         any visualisation should be done in the module 'visual'
 """
+from numpy.ma.extras import average
 
 import tui
 import process
@@ -29,7 +30,11 @@ def handle_view_data(data, parks):
         count = process.get_reviews_count_by_park_and_location(data, park, location)
         tui.display_review_count(park, location, count)
     elif choice == "C":
-        print("\nAverage Score per year by Park - coming soon\n")
+        park = tui.get_park_choice(parks)
+        year = tui.get_year_choice()
+        average = process.get_average_rating_by_park_and_year(data, park, year)
+        tui.display_average_raiting(park, year, average)
+
     elif choice == "D":
         print("\nAverage Score per Park by Reviewer Location - coming soon\n")
     else:
