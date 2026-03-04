@@ -14,3 +14,15 @@ def display_title():
 def display_loading_message(row_count):
     print(f"\nLoading Data...\n")
     print(f"{row_count} reviews found.\n")
+
+def display_main_menu():
+    print("-" * 50)
+    print("\n          MENU          \n")
+    print("-" * 50)
+    print("\nPlease select an option from the menu.\n")
+    print("[A] View Data\n")
+    print("[B] Visualise Data\n")
+    print("[C] Exit\n")
+
+def get_menu_choice():
+    return input("\nEnter your choice: .\n").strip().upper()

@@ -16,10 +16,12 @@ DATA_FILE = "data/disneyland_reviews.csv"
 
 def main():
     tui.display_title()
-
     data = process.load_data(DATA_FILE)
     parks = process.get_unique_parks(data)
     tui.display_loading_message(len(data))
+
+    tui.display_main_menu()
+    choice = tui.get_menu_choice()
 
 if __name__ == "__main__":
     main()
