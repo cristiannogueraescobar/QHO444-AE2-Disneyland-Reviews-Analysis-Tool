@@ -26,3 +26,11 @@ def display_main_menu():
 
 def get_menu_choice():
     return input("\nEnter your choice: .\n").strip().upper()
+
+def display_selected_choice(choice):
+    print("-" * 50)
+    print(f"\nYou selected {choice}\n")
+
+def display_invalid_choice():
+    print("\nInvalid choice. Please try again.\n")
+
