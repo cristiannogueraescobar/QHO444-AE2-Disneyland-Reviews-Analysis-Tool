@@ -5,6 +5,11 @@ Any visualisations should be generated via functions in this module.
 
 import matplotlib.pyplot as plt
 
+MONTH_NAMES = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+]
+
 def show_pie_chart_reviews_per_park(park_counts):
 
     labels = list(park_counts.keys())
@@ -42,6 +47,31 @@ def show_bar_chart_top_locations(top_locations, park):
         ax.text(bar.get_x() + bar.get_width() / 2,
                 bar.get_height() / 2,
                 f"n={count}", ha="center", va="bottom", fontsize=8, color="white")
+
+    plt.tight_layout()
+    plt.show()
+
+def show_bar_chart_monthly_ratings(monthly_data, park):
+
+    months = sorted(monthly_data.keys())
+    averages = [monthly_data[m] for m in months]
+
+    month_labels = [MONTH_NAMES[m - 1] for m in months]
+
+    fig, ax = plt.subplots(figsize=(10,6))
+
+    bars = ax.bar(month_labels, averages, color="coral", edgecolor="black")
+
+    ax.set_title("Average Monthly Rating - {park}",
+                 fontsize=14, fontweight="bold")
+    ax.set_xlabel("Months", fontsize=12)
+    ax.set_ylabel("Average Rating (out of 5)", fontsize=12)
+    ax.set_ylim(0, 5)
+
+    for bar, avg in zip(bars, averages):
+        ax.text(bar.get_x() + bar.get_width() / 2,
+                bar.get_height() + 0.05,
+                f"{avg:.2f}", ha="center", va="bottom", fontsize=9)
 
     plt.tight_layout()
     plt.show()

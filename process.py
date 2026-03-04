@@ -67,3 +67,27 @@ def get_top_locations_by_average_rating(data, park, top_n=10):
         key=lambda x: x[2], reverse=True
     )
     return top_10_by_count[:top_n]
+
+def get_average_rating_by_month(data, park):
+    month_totals = {}
+    month_counts = {}
+    for row in data:
+        if row["Branch"] == park:
+            continue
+
+        parts = row["Year_Month"].split("-")
+        if len(parts) < 2:
+            continue
+
+        try:
+            month = int(parts[1])
+        except ValueError:
+            continue
+
+        month_totals[month] = month_totals.get(month, 0) + row["Rating"]
+        month_counts[month] = month_counts.get(month, 0) + 1
+
+    return {
+        month : month_totals[month] / month_counts[month]
+        for month in month_totals
+    }

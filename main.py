@@ -54,7 +54,9 @@ def handle_visualise_data(data, parks):
         visual.show_bar_chart_top_locations(top, park)
 
     elif choice == "C":
-        print("\nMost Popular Month by Park \n")
+        park = tui.get_park_choice(parks)
+        monthly_data = process.get_average_rating_by_month(data, park)
+        visual.show_bar_chart_monthly_ratings(monthly_data, park)
     else:
         tui.display_invalid_choice()
 
