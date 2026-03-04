@@ -8,5 +8,14 @@ Note:   any user input/output should be done in the module 'tui'
         any visualisation should be done in the module 'visual'
 """
 
+import tui
+import process
+import visual
 
+DATA_FILE = "data/disneyland_reviews.csv"
 
+def main():
+    tui.display_title()
+
+if __name__ == "__main__":
+    main()
