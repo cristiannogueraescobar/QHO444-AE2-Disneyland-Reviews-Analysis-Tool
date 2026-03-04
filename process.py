@@ -3,3 +3,17 @@ This module is responsible for processing the data.  It will largely contain fun
 perfrom necessary processes in order to provide the desired result in the desired format.
 It is likely that most sections will require functions to be placed in this module.
 """
+import csv
+
+def load_data(filepath):
+    data = []
+    with open(filepath, encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            row["Rating"] = int(row["Rating"])
+            data.append(row)
+    return data
+
+def get_unique_parks(data):
+
+    return sorted(set(row["Branch"] for row in data))
