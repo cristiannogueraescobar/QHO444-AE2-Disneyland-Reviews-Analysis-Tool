@@ -22,6 +22,7 @@ def display_main_menu():
     print("\nPlease select an option from the menu.\n")
     print("[A] View Data\n")
     print("[B] Visualise Data\n")
+    print("[C] Export Data\n")
     print("[X] Exit\n")
 
 def get_menu_choice():
@@ -100,3 +101,12 @@ def display_average_score_by_location(results):
         print(f"\n--- {park} ---")
         for location, avg in sorted(location_data.items()):
             print(f" - {location}: {avg:.2f}")
+
+def display_export_menu():
+    print("\nPlease select export format.\n")
+    print("[A] Export to TXT\n")
+    print("[B] Export to CSV\n")
+    print("[C] Export to JSON\n")
+
+def display_export_success(filename):
+    print(f"\nData Successfully Exported to '{filename}'.\n")

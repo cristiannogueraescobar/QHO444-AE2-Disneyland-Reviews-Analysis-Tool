@@ -32,7 +32,7 @@ def handle_view_data(data, parks):
         park = tui.get_park_choice(parks)
         year = tui.get_year_choice()
         average = process.get_average_rating_by_park_and_year(data, park, year)
-        tui.display_average_raiting(park, year, average)
+        tui.display_average_rating(park, year, average)
 
     elif choice == "D":
         results = process.get_average_score_per_park_by_location(data)
@@ -62,6 +62,25 @@ def handle_visualise_data(data, parks):
     else:
         tui.display_invalid_choice()
 
+def handle_export_data(data):
+    from exporter import ParkExporter
+
+    tui.display_export_menu()
+    choice = tui.get_menu_choice()
+    tui.display_selected_choice(choice)
+
+    format_map = {"A": "txt", "B": "csv", "C": "json"}
+
+    if choice not in format_map:
+        tui.display_invalid_choice()
+        return
+
+    fmt = format_map[choice]
+    exporter = ParkExporter(data)
+    filename = exporter.export(fmt)
+    tui.display_export_success(filename)
+
+
 def main():
     tui.display_title()
     data = process.load_data(DATA_FILE)
@@ -78,6 +97,8 @@ def main():
             handle_view_data(data, parks)
         elif choice == "B":
             handle_visualise_data(data, parks)
+        elif choice == "C":
+            handle_export_data(data)
         elif choice == "X":
             print("\nGoodbye!\n")
             break
