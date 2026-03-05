@@ -1,7 +1,3 @@
-"""
-This module is responsible for visualising the data using Matplotlib.
-Any visualisations should be generated via functions in this module.
-"""
 
 import matplotlib.pyplot as plt
 
@@ -34,7 +30,7 @@ def show_bar_chart_top_locations(top_locations, park):
     fig, ax = plt.subplots(figsize=(12,6))
 
     bars = ax.bar(locations, averages, color="steelblue", edgecolor="black")
-    ax.set_title("Top 10 locations by Rating of Disneyland park",
+    ax.set_title(f"Top 10 locations by Rating of {park}",
                  fontsize=14, fontweight="bold")
     ax.set_xlabel("Reviewer Locations", fontsize=12)
     ax.set_ylabel("Average Rating (out of 5)", fontsize=12)
@@ -62,7 +58,7 @@ def show_bar_chart_monthly_ratings(monthly_data, park):
 
     bars = ax.bar(month_labels, averages, color="coral", edgecolor="black")
 
-    ax.set_title("Average Monthly Rating - {park}",
+    ax.set_title(f"Average Monthly Rating - {park}",
                  fontsize=14, fontweight="bold")
     ax.set_xlabel("Months", fontsize=12)
     ax.set_ylabel("Average Rating (out of 5)", fontsize=12)

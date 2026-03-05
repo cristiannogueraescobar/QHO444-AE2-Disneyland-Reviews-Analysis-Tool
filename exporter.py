@@ -1,7 +1,3 @@
-"""
-exporter.py – OOP export feature.
-Clase base ParkExporter + subclases TxtExporter, CsvExporter, JsonExporter.
-"""
 
 import csv
 import json
@@ -55,18 +51,17 @@ class ParkExporter:
         if fmt not in exporters:
             raise ValueError(f"Unknown format: {fmt}")
 
-        writer = exporters[fmt]()
-        writer._write(stats, filename)
+        exporters[fmt].write(stats, filename)
         return filename
 
 class TxtExporter:
-
-    def _write(self, stats, filename):
+    @staticmethod
+    def write(stats, filename):
         with open(filename, "w", encoding="utf-8") as f:
             f.write("DISNEYLAND PARK STATISTICS\n")
             f.write("-" * 50 + "\n")
             for s in stats:
-                f.write(f"{s['park']}: {s['park']}\n")
+                f.write(f"park: {s['park']}\n")
                 f.write(f"Total Reviews: {s['reviews']}\n")
                 f.write(f"Positives (>=4): {s['positive']}\n")
                 f.write(f"Average Score: {s['avg_score']}\n")
@@ -74,8 +69,8 @@ class TxtExporter:
                 f.write("\n")
 
 class CsvExporter:
-
-    def _write(self, stats, filename):
+    @staticmethod
+    def write(stats, filename):
         with open(filename, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=[
                 "park", "reviews", "positive", "avg_score", "countries"
@@ -84,7 +79,7 @@ class CsvExporter:
             writer.writerows(stats)
 
 class JsonExporter:
-
-    def _write(self, stats, filename):
+    @staticmethod
+    def write(stats, filename):
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(stats, f, indent=4)

@@ -1,8 +1,4 @@
-"""
-This module is responsible for processing the data.  It will largely contain functions that will recieve the overall dataset and 
-perfrom necessary processes in order to provide the desired result in the desired format.
-It is likely that most sections will require functions to be placed in this module.
-"""
+
 import csv
 
 def load_data(filepath):
@@ -61,7 +57,7 @@ def get_top_locations_by_average_rating(data, park, top_n=10):
         loc : location_totals[loc] / location_counts[loc]
         for loc in location_totals
     }
-    sorted_locs = sorted(averages.items(), key=lambda x: x[1], reverse=True)
+
     top_10_by_count = sorted(
         [(loc, avg, location_counts[loc]) for loc, avg in averages.items()],
         key=lambda x: x[2], reverse=True
@@ -72,7 +68,7 @@ def get_average_rating_by_month(data, park):
     month_totals = {}
     month_counts = {}
     for row in data:
-        if row["Branch"] == park:
+        if row["Branch"] != park:
             continue
 
         parts = row["Year_Month"].split("-")
