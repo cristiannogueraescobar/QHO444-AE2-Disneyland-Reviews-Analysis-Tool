@@ -12,14 +12,14 @@ def display_main_menu():
     print("-" * 50)
     print("          MENU          ")
     print("-" * 50)
-    print("\nPlease select an option from the menu.\n")
+    print("\nPlease select an option from the menu\n")
     print("[A] View Data\n")
     print("[B] Visualise Data\n")
     print("[C] Export Data\n")
     print("[X] Exit\n")
 
 def get_menu_choice():
-    return input("\nEnter your choice: .\n").strip().upper()
+    return input("\nEnter your choice: \n").strip().upper()
 
 def display_selected_choice(choice):
     print("-" * 50)
@@ -34,19 +34,27 @@ def display_view_data_menu():
     print("[B] Number of Reviews by Park and Location\n")
     print("[C] Average Rating by Park and Year\n")
     print("[D] Average Score per Park by Reviewer Location\n")
+    print("[X] Back to Main Menu\n")
 
 def display_visualise_menu():
     print("\nPlease select an option from the menu.\n")
     print("[A] Most Reviewed Parks\n")
     print("[B] Park Ranking by Nationality\n")
     print("[C] Most Popular Month by Park\n")
+    print("[X] Back to Main Menu\n")
 
 def get_park_choice(parks):
-    print("\nAvailable parks: .\n")
+    print("\nAvailable parks: \n")
     for i, park in enumerate(parks, 1):
-        print(f"   {i}. {park}")
+        print(f"   {i}. {park.replace('_', ' ')}")
     while True:
-        choice = input("\nEnter your choice: .\n").strip()
+        choice = input("\nEnter your choice (number or name): ").strip()
+        if choice.isdigit():
+            idx = int(choice)
+            if 1 <= idx <= len(parks):
+                return parks[idx - 1]
+        if choice.replace(" ", "_") in parks:
+            return choice.replace(" ", "_")
         if choice in parks:
             return choice
         print("\nInvalid choice. Please try again.\n")
@@ -75,13 +83,13 @@ def get_location_choice(data):
     for loc in locations:
         print(f" - {loc}")
     print()
-    return input("\nEnter reviewer location: .").strip()
+    return input("\nEnter reviewer location: ").strip()
 
 def display_review_count(park, location, count):
     print(f"\nReviews for {park} from {location}: {count}\n")
 
 def get_year_choice():
-    return input("\nEnter a year (e.g. 2019): .\n").strip()
+    return input("\nEnter a year (e.g. 2019): \n").strip()
 
 def display_average_rating(park, year, average):
     if average is None:
@@ -100,6 +108,7 @@ def display_export_menu():
     print("[A] Export to TXT\n")
     print("[B] Export to CSV\n")
     print("[C] Export to JSON\n")
+    print("[X] Back to Main Menu\n")
 
 def display_export_success(filename):
     print(f"\nData Successfully Exported to '{filename}'.\n")
