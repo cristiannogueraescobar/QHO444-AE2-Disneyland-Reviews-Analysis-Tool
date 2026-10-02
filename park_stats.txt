@@ -1,0 +1,20 @@
+DISNEYLAND PARK STATISTICS
+--------------------------------------------------
+park: Disneyland_California
+Total Reviews: 19406
+Positives (>=4): 16499
+Average Score: 4.41
+Countries: 111
+
+park: Disneyland_HongKong
+Total Reviews: 9617
+Positives (>=4): 7744
+Average Score: 4.2
+Countries: 115
+
+park: Disneyland_Paris
+Total Reviews: 13629
+Positives (>=4): 9674
+Average Score: 3.96
+Countries: 132
+
